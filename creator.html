@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melony's Pixel Pony Customizer</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 10px;
+        }
+        .container-wrapper {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            flex-wrap: wrap; /* Allows items to wrap onto a new line on small screens */
+        }
+        .character-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            border: 1px solid white;
+            background-color: white;
+            margin: 0; /* Adjusted margin */
+        }
+        .character-part {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+        }
+        .controls button {
+            padding: 10px 15px;
+            font-size: 16px;
+            text-align: left;
+            width: 150px;
+        }
+        .instructions {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .instructions p {
+            margin: 0 0 10px 0;
+        }
+        .instructions a {
+            color: #4da6ff;
+        }
+
+        /* --- Mobile Styles (Media Query) --- */
+        @media (max-width: 768px) {
+            .container-wrapper {
+                flex-direction: column; /* Stacks the character box and controls vertically */
+            }
+            .character-container {
+                width: 300px; /* Smaller size for mobile view */
+                height: 300px; /* Smaller size for mobile view */
+                margin-bottom: 20px;
+            }
+            .controls {
+                flex-direction: row; /* Arranges buttons horizontally on mobile */
+                flex-wrap: wrap;
+                max-width: none; /* Removes max-width constraint */
+            }
+            .controls button {
+                width: auto; /* Buttons resize to fit content on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Melony's Pixel Pony Customizer</h1>
+
+    <div class="container-wrapper">
+        <div class="character-container">
+            <!-- Image Layers (Order matters! Bottom layers first) -->
+            <img src="base.png" alt="Base Character" class="character-part" id="base">
+            <img src="hooves1.png" alt="Hooves" class="character-part" id="hooves">
+            <img src="horn1.png" alt="Horn" class="character-part" id="horn">
+            <img src="wings1.png" alt="Wings Style" class="character-part" id="wings">
+            <img src="ears1.png" alt="Ear Style" class="character-part" id="ears">
+            <img src="eyes1.png" alt="Eye Style" class="character-part" id="eyes">
+            <img src="mouth1.png" alt="Mouth Style" class="character-part" id="mouth">
+        </div>
+    
+        <div class="controls">
+            <!-- Instructions Section -->
+            <div class="instructions">
+                <p>Here you can customize your pixel/perler bead base so that I understand what expressions or other parts you prefer on your commission!</p>
+                <p>Once you're finished, please send me a screenshot of your creation through e-mail for a price quote.</p>
+                <p>E-mail: <a href="mailto:melonypony1@hotmail.com">melonypony1@hotmail.com</a></p>
+            </div>
+
+            <!-- Buttons arranged vertically with simplified labels -->
+            <button onclick="changeEars()">Ears</button>
+            <button onclick="changeMouth()">Mouth</button>
+            <button onclick="changeEyes()">Eyes</button>
+            <button onclick="changeWings()">Wings</button>
+            <button onclick="changeHooves()">Hooves</button>
+            <button onclick="changeHorn()">Horn</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Image Lists (Added 'none.png' as the first option to hide the part) ---
+        const earImages = ["ears1.png", "ears2.png"]; 
+        const mouthImages = ["mouth1.png", "mouth2.png", "mouth3.png", "mouth4.png", "mouth5.png", "mouth6.png", "mouth7.png", "mouth8.png", "mouth9.png", "mouth10.png", "mouth11.png", "mouth12.png", "mouth13.png"];
+        const eyeImages = ["eyes1.png", "eyes2.png", "eyes3.png", "eyes4.png", "eyes5.png"];
+        
+        // Added 'none.png' to these lists to make them optional
+        const wingImages = ["none.png", "wings1.png", "wings2.png", "wings3.png", "wings4.png", "wings5.png", "wings6.png"];
+        const hoofImages = ["none.png", "hooves1.png"];
+        const hornImages = ["none.png", "horn1.png"];
+
+
+        // --- Index Trackers ---
+        let currentEarIndex = 0;
+        let currentMouthIndex = 0;
+        let currentEyeIndex = 0;
+        let currentWingIndex = 0;
+        let currentHoofIndex = 0;
+        let currentHornIndex = 0;
+
+
+        // --- Change Functions ---
+        function changeEars() {
+            currentEarIndex = (currentEarIndex + 1) % earImages.length;
+            document.getElementById('ears').src = earImages[currentEarIndex];
+        }
+
+        function changeMouth() {
+            currentMouthIndex = (currentMouthIndex + 1) % mouthImages.length;
+            document.getElementById('mouth').src = mouthImages[currentMouthIndex];
+        }
+
+        function changeEyes() {
+            currentEyeIndex = (currentEyeIndex + 1) % eyeImages.length;
+            document.getElementById('eyes').src = eyeImages[currentEyeIndex];
+        }
+        
+        function changeWings() {
+            currentWingIndex = (currentWingIndex + 1) % wingImages.length;
+            document.getElementById('wings').src = wingImages[currentWingIndex];
+        }
+
+        function changeHooves() {
+            currentHoofIndex = (currentHoofIndex + 1) % hoofImages.length;
+            document.getElementById('hooves').src = hoofImages[currentHoofIndex];
+        }
+
+        function changeHorn() {
+            currentHornIndex = (currentHornIndex + 1) % hornImages.length;
+            document.getElementById('horn').src = hornImages[currentHornIndex];
+        }
+    </script>
+
+</body>
+</html>
